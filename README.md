@@ -1,11 +1,4 @@
-# Databricks Scala Guide
-
-With over 800 contributors, Spark is to the best of our knowledge the largest open-source project in Big Data and the most active project written in Scala. This guide draws from our experience coaching and working with engineers contributing to Spark as well as our [Databricks](http://databricks.com/) engineering team.
-
-Code is __written once__ by its author, but __read and modified multiple times__ by lots of other engineers. As most bugs actually come from future modification of the code, we need to optimize our codebase for long-term, global readability and maintainability. The best way to achieve this is to write simple code.
-
-Scala is an incredibly powerful language that is capable of many paradigms. We have found that the following guidelines work well for us on projects with high velocity. Depending on the needs of your team, your mileage might vary.
-
+<a href="http://signalvine.com"><img alt="Signal Vine Scala Guide" src="assets/logo.png"/></a>
 
 ## <a name='TOC'>Table of Contents</a>
 
@@ -66,10 +59,7 @@ Scala is an incredibly powerful language that is capable of many paradigms. We h
 
 
 ## <a name='history'>Document History</a>
-- 2015-03-16: initial version
-- 2015-05-25: added [override Modifier](#override_modifier) section
-- 2015-08-23: downgraded the severity of some rules from "do NOT" to "avoid"
-
+- 2015-10-01: Forked from https://github.com/databricks/scala-style-guide
 
 ## <a name='syntactic'>Syntactic Style</a>
 
@@ -86,7 +76,7 @@ We mostly follow Java's and Scala's standard naming conventions.
 
 - Packages should follow Java package naming conventions, i.e. all-lowercase ASCII letters.
   ```scala
-  package com.databricks.resourcemanager
+  package com.signalvine.service
   ```
 
 - Methods/functions should be named in camelCase style.
@@ -306,9 +296,9 @@ Of course, the situation in which a class grows this long is strongly discourage
 - Always import packages using absolute paths (e.g. `scala.util.Random`) instead of relative ones (e.g. `util.Random`).
 - In addition, sort imports in the following order:
   * `java.*` and `javax.*`
-  * `scala.*`
+  * `scala.*` and `scalaz.*`
   * Third-party libraries (`org.*`, `com.*`, etc)
-  * Project classes (`com.databricks.*` or `org.apache.spark` if you are working on Spark)
+  * Project classes (`com.signalvine.*`, `theseus.*`, etc)
 - Within each group, imports should be sorted in alphabetic ordering.
 - You can use IntelliJ's import organizer to handle this automatically, using the following config:
 
@@ -317,10 +307,12 @@ Of course, the situation in which a class grows this long is strongly discourage
   javax
   _______ blank line _______
   scala
+  scalaz
   _______ blank line _______
   all other imports
   _______ blank line _______
-  com.databricks  // or org.apache.spark if you are working on Spark
+  com.signalvine
+  theseus
   ```
 
 
@@ -953,7 +945,7 @@ There are a few things to watch out for when it comes to companion objects and s
     def method2(): Unit = { ... }  // a static method Foo.method1 is NOT created in bytecode
   }
 
-  // FooJavaTest.java (in test/scala/com/databricks/...)
+  // FooJavaTest.java (in test/scala/com/signalvine/...)
   public class FooJavaTest {
     public static compileTest() {
       Foo.method1();  // This one should compile fine
