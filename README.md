@@ -121,24 +121,36 @@ In general:
   }
   ```
 
-- For function declarations, use 4 space indentation for its parameters when they don't fit in a single line. Return types can be either on the same line as the last parameter, or put to next line with 2 space indent.
+- For function declarations, use 4 space indentation for its parameters when they
+  don't fit in a single line. Return types can be either on the same line as the
+  last parameter, or put to next line with 4 space indent.
   ```scala
-  def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]](
-      path: String,
-      fClass: Class[F],
-      kClass: Class[K],
-      vClass: Class[V],
-      conf: Configuration = hadoopConfiguration): RDD[(K, V)] = {
+  def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]]
+      (path: String,
+       fClass: Class[F],
+       kClass: Class[K],
+       vClass: Class[V],
+       conf: Configuration = hadoopConfiguration): RDD[(K, V)] = {
     // function body
   }
 
-  def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]](
-      path: String,
-      fClass: Class[F],
-      kClass: Class[K],
-      vClass: Class[V],
-      conf: Configuration = hadoopConfiguration)
-    : RDD[(K, V)] = {
+  def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]]
+      (path: String,
+       fClass: Class[F],
+       kClass: Class[K],
+       vClass: Class[V],
+       conf: Configuration = hadoopConfiguration)
+      : RDD[(K, V)] = {
+    // function body
+  }
+
+  // Placing the open-paren on the same line as the first parameter is
+  // useful for multiple parameter lists.
+  def join
+      (c: blackbox.Context)
+      (sep: c.Expr[String])
+      (elems: Seq[c.Expr[String]])
+      : c.Expr[String] = {
     // function body
   }
   ```
