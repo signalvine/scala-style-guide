@@ -448,7 +448,16 @@ __Avoid using multiple parameter lists__. They complicate operator overloading, 
 case class Person(name: String, age: Int)(secret: String)
 ```
 
-One notable exception is the use of a 2nd parameter list for implicits when defining low-level libraries. That said, [implicits should be avoided](#implicits)!
+However, there may be times when there is a good reason use multiple parameter lists.  For instance, higher order functions which
+take a function as a seprate parameter list provide a very convenient and natural syntax -
+
+```scala
+List("foo", "bar", "baz").foldLeft("") { (acc, s) =>
+  if (acc.isEmpty) s else acc + "," + s
+}
+```
+
+Another notable exception is the use of a 2nd parameter list for implicits when defining low-level libraries. That said, [implicits should be avoided](#implicits)!
 
 
 ### <a name='symbolic_methods'>Symbolic Methods (Operator Overloading)</a>
