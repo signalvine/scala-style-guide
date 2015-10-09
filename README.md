@@ -155,14 +155,19 @@ In general:
   }
   ```
 
-- For classes whose header doesn't fit in a single line, put the extend on the next line with 2 space indent, and add a blank line after class header.
+- For classes whose header doesn't fit in a single line, indent parameters 2 spaces,
+  put the extend on the next line with 2 space indent, and add a blank line after class header.
   ```scala
-  class Foo(
-      val param1: String,  // 4 space indent for parameters
-      val param2: String,
-      val param3: Array[Byte])
+  sealed case class Foo(a: String, b: String)
     extends FooInterface  // 2 space here
-    with Logging {
+    with Logging
+
+  class Bar(
+    val param1: String,  // 2 space indent for parameters
+    val param2: String,
+    val param3: Array[Byte]
+  ) extends BarInterface
+    with Logging {       // 2 space here as well
 
     def firstMethod(): Unit = { ... }  // blank line above
   }
