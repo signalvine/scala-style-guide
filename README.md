@@ -173,6 +173,26 @@ In general:
   }
   ```
 
+- If passing parameters which don't fit on a single line, indent 2 spaces just like with classes.
+  Commas should come _after_ each parameter, not before.
+  ```scala
+  // Correct:
+  val result = foo(
+    param1,
+    param2,
+  )
+
+  // Wrong:
+  val result = foo( param1
+                  , param2
+                  )
+
+  // Wrong:
+  val result = foo(param1,
+    param2
+  )
+  ```
+
 - Do NOT use vertical alignment. They draw attention to the wrong parts of the code and make the aligned code harder to change in the future.
   ```scala
   // Don't align vertically
