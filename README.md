@@ -153,6 +153,14 @@ In general:
       : c.Expr[String] = {
     // function body
   }
+
+  // If the function body is a oneliner but you need more lines for parameter lists,
+  // place the equals and body on their own line, indented 4 spaces.
+  override def listUsers
+      (id: UUID[Account])
+      (implicit c: Connection)
+      : List[User]
+      = impl(id)
   ```
 
 - For classes whose header doesn't fit in a single line, indent parameters 2 spaces,
