@@ -178,7 +178,7 @@ In general:
       = impl(id)
   ```
 
-#### :warning: For classes whose header doesn't fit in a single line, indent parameters 3 spaces,
+#### :warning: For classes whose header doesn't fit in a single line, indent parameters 2 spaces,
   put the extend on the next line with 2 space indent, and add a blank line after class header.
   ```scala
   sealed case class Foo(a: String, b: String)
