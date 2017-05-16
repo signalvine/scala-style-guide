@@ -140,22 +140,21 @@ In general:
   don't fit in a single line. Return types can be either on the same line as the
   last parameter, or put to next line with 4 space indent.
   ```scala
-  def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]]
-      (path: String,
-       fClass: Class[F],
-       kClass: Class[K],
-       vClass: Class[V],
-       conf: Configuration = hadoopConfiguration): RDD[(K, V)] = {
+  def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]](
+      path: String,
+      fClass: Class[F],
+      kClass: Class[K],
+      vClass: Class[V],
+      conf: Configuration = hadoopConfiguration): RDD[(K, V)] = {
     // function body
   }
 
-  def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]]
-      (path: String,
-       fClass: Class[F],
-       kClass: Class[K],
-       vClass: Class[V],
-       conf: Configuration = hadoopConfiguration)
-      : RDD[(K, V)] = {
+  def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]](
+      path: String,
+      fClass: Class[F],
+      kClass: Class[K],
+      vClass: Class[V],
+      conf: Configuration = hadoopConfiguration): RDD[(K, V)] = {
     // function body
   }
 
@@ -164,21 +163,19 @@ In general:
   def join
       (c: blackbox.Context)
       (sep: c.Expr[String])
-      (elems: Seq[c.Expr[String]])
-      : c.Expr[String] = {
+      (elems: Seq[c.Expr[String]]): c.Expr[String] = {
     // function body
   }
 
   // If the function body is a oneliner but you need more lines for parameter lists,
-  // place the equals and body on their own line, indented 4 spaces.
+  // place the equals and body on their own line, indented 2 spaces.
   override def listUsers
       (id: UUID[Account])
-      (implicit c: Connection)
-      : List[User]
-      = impl(id)
+      (implicit c: Connection): List[User]
+    = impl(id)
   ```
 
-#### :warning: For classes whose header doesn't fit in a single line, indent parameters 2 spaces,
+#### :warning: For classes whose header doesn't fit in a single line, indent parameters 4 spaces,
   put the extend on the next line with 2 space indent, and add a blank line after class header.
   ```scala
   sealed case class Foo(a: String, b: String)
@@ -186,11 +183,10 @@ In general:
     with Logging
 
   class Bar(
-    val param1: String,  // 2 space indent for parameters
-    val param2: String,
-    val param3: Array[Byte]
-  ) extends BarInterface
-    with Logging {       // 2 space here as well
+      val param1: String,  // 4 space indent for parameters
+      val param2: String,
+      val param3: Array[Byte]
+  ) extends BarInterface with Logging {       // 2 space here
 
     def firstMethod(): Unit = { ... }  // blank line above
   }
@@ -201,9 +197,8 @@ In general:
   ```scala
   // Correct:
   val result = foo(
-    param1,
-    param2,
-  )
+      param1,
+      param2)
 
   // Wrong:
   val result = foo( param1
